@@ -1,0 +1,117 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="BluetoothClientWP8.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+
+    <Grid x:Name="LayoutRoot" Margin="0,-30,0,0">
+        <Grid x:Name="Maingrid" HorizontalAlignment="Left" Height="768" VerticalAlignment="Top" Width="480" Margin="0,30,0,0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00042E" Offset="1"/>
+                    <GradientStop Color="Blue" Offset="0.53"/>
+                    <GradientStop Color="#FF000323"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock x:Name="OSNum" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,484,0,0" Height="149" Width="460" FontSize="100" TextAlignment="Center"/>
+            <Button Name="ConnectAppToDeviceButton" Click="ConnectAppToDeviceButton_Click_1" Content="Connect" Margin="14,65,333,621"/>
+            <TextBox x:Name="DeviceName" HorizontalAlignment="Left" Height="72" Margin="133,75,0,0" TextWrapping="Wrap" Text="HC-06" VerticalAlignment="Top" Width="112"/>
+            <Button x:Name="switch_button" Content="Switch mode" HorizontalAlignment="Left" Margin="301,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.75,-0.225" Height="75" Width="163" Click="Switch_click" FontSize="18"/>
+            <TextBlock x:Name="Count_Title" HorizontalAlignment="Left" Margin="70,305,0,0" TextWrapping="Wrap" Text="Number of Objects" VerticalAlignment="Top" FontSize="40" Width="361"/>
+            <TextBlock HorizontalAlignment="Left" Margin="273,717,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" Height="32">
+            	<Run Text="2015 © Titanlossus"/>
+            	<LineBreak/>
+            	<Run/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="55,17,0,0" TextWrapping="Wrap" Text="OS CONTROLLER" VerticalAlignment="Top" FontSize="40" Width="376" TextAlignment="Center"/>
+            <TextBlock x:Name="Status" HorizontalAlignment="Left" Margin="146,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="155" Text="COUNT" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="33,170,0,0" TextWrapping="Wrap" Text="MODE:" VerticalAlignment="Top" FontSize="30"/>
+            <Button x:Name="Reset_but" Content="RESET NUMBER" HorizontalAlignment="Left" Margin="264,640,0,0" VerticalAlignment="Top" Width="216" Click="Reset_clicked"/>
+            <TextBlock x:Name="Thief_Title" HorizontalAlignment="Left" Margin="55,411,0,0" TextWrapping="Wrap" Text="THIEF DETECTING..." VerticalAlignment="Top" Height="57" Width="376" FontSize="40" Visibility="Collapsed"/>
+            <Button x:Name="Update_but" Content="UPDATE" HorizontalAlignment="Left" Margin="14,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.673,-2.014" Click="Update_click"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="21,649,0,0" VerticalAlignment="Top" Width="100" Source="/Assets/NH Logo.png"/>
+            <CheckBox x:Name="Turnoncount" Content="Uncounting..." HorizontalAlignment="Left" Margin="264,75,0,0" VerticalAlignment="Top" Height="70" Click="Count_Click" FontStyle="Italic"/>
+            <Button x:Name="OUT_BUT" Content="OUT" HorizontalAlignment="Left" Height="67" Margin="342,358,0,0" VerticalAlignment="Top" Width="113" Click="OUT_BUT_CLICKED"/>
+            <Button x:Name="NOW_BUT" Content="NOW" HorizontalAlignment="Left" Height="67" Margin="188,358,0,0" VerticalAlignment="Top" Width="113" Click="NOW_BUT_Clicked" IsEnabled="False"/>
+            <Button x:Name="IN_BUTTON" Content="IN" HorizontalAlignment="Left" Height="67" Margin="33,358,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.41,0.373" Click="IN_BUT"/>
+            <Button x:Name="Sync" Content="Sync" HorizontalAlignment="Left" Margin="147,228,0,0" VerticalAlignment="Top" Click="Sync_click"/>
+            <Button x:Name="IRTEST_But" Content="IR TEST" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="301,228,0,0" Click="IRTEST_Clicked" Width="163"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="141,649,0,0" VerticalAlignment="Top" Width="100" Source="/Assets/Tiles/Titanlossus logo.png"/>
+
+
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        <Grid x:Name="Thief_Detec" HorizontalAlignment="Left" Width="480" Margin="0,30,0,0" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF440000" Offset="0.008"/>
+                    <GradientStop Color="#FFDC0000" Offset="0.506"/>
+                    <GradientStop Color="#FF460000" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="THIEF DETECTED!" VerticalAlignment="Top" Margin="0,339,0,0" Height="75" Width="470" Foreground="White" FontSize="50" TextAlignment="Center" Grid.ColumnSpan="2"/>
+            <Button x:Name="Stop_but" Content="STOP" HorizontalAlignment="Left" Margin="105,653,0,0" VerticalAlignment="Top" Grid.Column="1" Click="Stop_Clicked"/>
+            <MediaElement x:Name="Warningup" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="0,0,-100,0" VerticalAlignment="Top" Width="100" Visibility="Collapsed" Volume="1" Source="/Warning.wav" Stretch="None" AutoPlay="False"/>
+        </Grid>
+        <Grid x:Name="IR_Testplace" HorizontalAlignment="Left" Height="768" Margin="0,30,0,0" VerticalAlignment="Top" Width="480" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF122C00" Offset="0"/>
+                    <GradientStop Color="#FF368300" Offset="0.426"/>
+                    <GradientStop Color="#FF143000" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBox x:Name="IRIN_VALUE" HorizontalAlignment="Left" Height="70" Margin="136.643,498,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="153.288" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" TextAlignment="Right">
+                <TextBox.RenderTransform>
+                    <CompositeTransform SkewX="1.975" TranslateX="0.966"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Button x:Name="IRSync" Content="IR SYNC" HorizontalAlignment="Left" Margin="22,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.836,1.972" Click="IRSync_Clicked"/>
+            <TextBlock HorizontalAlignment="Left" Margin="72,27,0,0" TextWrapping="Wrap" Text="Current Default" VerticalAlignment="Top" FontSize="50"/>
+            <TextBlock HorizontalAlignment="Left" Margin="22,442,0,0" TextWrapping="Wrap" Text="IR DEFAULT SETTINGS" VerticalAlignment="Top" Width="416" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="48"/>
+            <TextBlock HorizontalAlignment="Left" Margin="22,512,0,0" TextWrapping="Wrap" Text="IR IN" VerticalAlignment="Top" FontSize="30" Height="42" Width="105"/>
+            <TextBox x:Name="IROUT_VALUE" HorizontalAlignment="Left" Height="70" Margin="136.896,562,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="155.15" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" TextAlignment="Right">
+                <TextBox.RenderTransform>
+                    <CompositeTransform SkewX="1.975" TranslateX="0.966"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Button x:Name="SET_BUT" Content="Set" HorizontalAlignment="Left" Margin="227,657,0,0" VerticalAlignment="Top" Click="SET_clicked" Height="83" Width="103" FontSize="30"/>
+            <TextBlock HorizontalAlignment="Left" Margin="22,576,0,0" TextWrapping="Wrap" Text="IR OUT" VerticalAlignment="Top" FontSize="30" Height="42" Width="105"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,186,0,0" TextWrapping="Wrap" Text="IR IN:" VerticalAlignment="Top" FontSize="50" Height="72" Width="183" RenderTransformOrigin="1.029,0.667" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,325,0,0" TextWrapping="Wrap" Text="IR OUT:" VerticalAlignment="Top" FontSize="50" Height="76" Width="183" TextAlignment="Right" RenderTransformOrigin="0.514,0.539"/>
+            <TextBlock x:Name="IRIN_Text" HorizontalAlignment="Left" Margin="227,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Height="72" Width="211" RenderTransformOrigin="1.029,0.667"/>
+            <TextBlock x:Name="IROUT_Text" HorizontalAlignment="Left" Margin="227,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Height="72" Width="211" RenderTransformOrigin="1.029,0.667"/>
+            <Button x:Name="Back_but" Content="Back" HorizontalAlignment="Left" Margin="349,666,0,0" VerticalAlignment="Top" Click="Back_but_Click" Width="121"/>
+            <TextBox x:Name="IRIN_VALUE1" HorizontalAlignment="Left" Height="70" Margin="294.643,498,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="153.288" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" TextAlignment="Right">
+                <TextBox.RenderTransform>
+                    <CompositeTransform SkewX="1.975" TranslateX="0.966"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox x:Name="IROUT_VALUE1" HorizontalAlignment="Left" Height="70" Margin="294.896,562,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="155.15" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" TextAlignment="Right">
+                <TextBox.RenderTransform>
+                    <CompositeTransform SkewX="1.975" TranslateX="0.966"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+        </Grid>
+        <Button x:Name="Close_but" Content="X" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.108,-0.778" Width="72" Click="Exit_clicked"/>
+        <Button x:Name="Break_But" Content="B" HorizontalAlignment="Left" Margin="415,30,0,0" VerticalAlignment="Top" Click="breack_Click"/>
+       
+    </Grid>
+
+</phone:PhoneApplicationPage>
